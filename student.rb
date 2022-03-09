@@ -1,10 +1,11 @@
-require "./person.rb"
-Class Student < Person
-    def initialize(classroom)
-        super()
-        @classroom = classroom
-    end
-    def play_hooky
-        return "¯\(ツ)/¯"
-    end
+require './person'
+class Student < Person
+  def initialize(classroom)
+    super()
+    @classroom = classroom
+  end
+
+  def play_hooky
+    "¯\(ツ)/¯"
+  end
 end
