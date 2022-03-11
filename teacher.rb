@@ -1,8 +1,9 @@
 require './person'
 require 'pry'
 class Teacher < Person
-  def initialize(specialization, age, parent_permission: true)
-    super(age, name)
+  attr_accessor :specialization
+  def initialize(specialization, age, name= "unknown", parent_permission: true)
+    super(age,name)
     @specialization = specialization
   end
 
@@ -11,6 +12,9 @@ class Teacher < Person
   end
 end
 
-teacher1 = Teacher.new('AI', 55, 'James')
+teacher1 = Teacher.new(88,'AI','James')
 p teacher1.name
 p teacher1.age
+p teacher1.specialization
+
+binding.pry
