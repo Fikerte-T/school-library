@@ -4,7 +4,7 @@ require './classroom'
 require './rental'
 require './student'
 require './teacher'
-require 'pry'
+
 class App
   def run
     @books = []
@@ -70,12 +70,14 @@ class App
     puts 'Name: '
     name = gets.chomp.to_s
     puts 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp.downcase
-    case parent_permission
+    permission = gets.chomp.downcase
+    case permission
     when 'y'
-      Student.new(age, name)
+      parent_permission = true
+      Student.new(age, name, parent_permission)
     when 'n'
-      Student.new(age, name, parent_permission: false)
+      parent_permission = false
+      Student.new(age, name, parent_permission)
     else
       puts 'Please enter Y/N[y/n]'
       create_student
