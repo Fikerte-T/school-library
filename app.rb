@@ -90,7 +90,7 @@ class App
     name = gets.chomp
     puts 'Specialization: '
     specialization = gets.chomp
-    Teacher.new(age, name, specialization)
+    Teacher.new(specialization, age, name)
   end
 
   def create_book
