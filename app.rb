@@ -65,8 +65,6 @@ class App
   end
 
   def create_student
-    puts 'Classroom: '
-    classroom = gets.chomp
     puts 'Age: '
     age = gets.chomp.to_i
     puts 'Name: '
