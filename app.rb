@@ -73,9 +73,9 @@ class App
     parent_permission = gets.chomp.downcase
     case parent_permission
     when 'y'
-      Student.new(classroom, age, name)
+      Student.new(age, name)
     when 'n'
-      Student.new(classroom, age, name, parent_permission: false)
+      Student.new(age, name, parent_permission: false)
     else
       puts 'Please enter Y/N[y/n]'
       create_student
@@ -112,7 +112,7 @@ class App
     else
       @person.each_with_index do |person, index|
         if person.is_a?(Student)
-          puts "#{index}) [Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+          puts "#{index}) [Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}}"
         else
           puts "#{index}) [Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
         end
