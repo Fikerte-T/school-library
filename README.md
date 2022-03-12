@@ -27,7 +27,7 @@ N/A
 ### Usage
 
 - run: `git clone https://https://github.com/Fikerte-T/school-library/`
-- run: `ruby my_list.rb`
+- run: `ruby main.rb`
 
 ### Deployment
 
