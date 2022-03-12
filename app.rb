@@ -29,6 +29,7 @@ class App
     options
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def perform_switch(choice)
     case choice
     when 1
@@ -48,6 +49,7 @@ class App
     else puts 'Only digits 1 to 7 are allowed'
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
@@ -55,7 +57,6 @@ class App
     case num
     when 1
       @person.push(create_student)
-    #   binding.pry
       puts 'Student created successfully'
     when 2
       @person.push(create_teacher)
@@ -74,12 +75,12 @@ class App
     parent_permission = gets.chomp.downcase
     case parent_permission
     when 'y'
-      Student.new(classroom, age, name, parent_permission: true)
+      Student.new(classroom, age, name)
     when 'n'
       Student.new(classroom, age, name, parent_permission: false)
     else
       puts 'Please enter Y/N[y/n]'
-      parent_permission = gets.chomp.downcase
+      create_student
     end
   end
 
@@ -108,16 +109,16 @@ class App
 
   def list_people
     if @person.empty?
-        puts "\nNo registered person. You can create a person from the main menu."
-        puts
+      puts "\nNo registered person. You can create a person from the main menu."
+      puts
     else
-        @person.each_with_index do |person, index|
-            if person.is_a?(Student)
-                puts "#{index}) [Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-            else
-                puts "#{index}) [Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-            end
+      @person.each_with_index do |person, index|
+        if person.is_a?(Student)
+          puts "#{index}) [Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        else
+          puts "#{index}) [Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
         end
+      end
     end
   end
 
