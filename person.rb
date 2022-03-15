@@ -1,9 +1,10 @@
-# rubocop: disable Style/OptionalBooleanParameter
+# rubocop: disable Style
 require './nameable'
 
 class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id, :rentals
+
   @@people = []
 
   def initialize(age, name = 'Unknown', parent_permission = true)
@@ -34,4 +35,4 @@ class Person < Nameable
     true if @age >= 18
   end
 end
-# rubocop: enable Style/OptionalBooleanParameter
+# rubocop: enable Style
