@@ -5,7 +5,7 @@ require './rental'
 require './student'
 require './teacher'
 
-class App
+
   def run
     @books = []
     @person = []
@@ -148,4 +148,6 @@ class App
     puts 'Thank you for using this app!'
     exit
   end
-end
+
+
+run
