@@ -6,9 +6,8 @@ require './student'
 require './teacher'
 require_relative './person_main'
 require_relative './book_main'
-@person_main = Person_Main.new
-@book_main = Book_Main.new
-
+@person_main = PersonMain.new
+@book_main = BookMain.new
 
   def run
     @books = []
@@ -39,9 +38,9 @@ require_relative './book_main'
     when 1
       @book_main.list_books
     when 2
-      list_people
+      @person_main.list_people
     when 3
-      create_person
+      @person_main.create_person
     when 4
       @book_main.create_book
     when 5
@@ -56,54 +55,12 @@ require_relative './book_main'
   # rubocop:enable Metrics/CyclomaticComplexity
 
  
-  def create_student
-    puts 'Age: '
-    age = gets.chomp.to_i
-    puts 'Name: '
-    name = gets.chomp.to_s
-    puts 'Has parent permission? [Y/N]: '
-    permission = gets.chomp.downcase
-    case permission
-    when 'y'
-      parent_permission = true
-      Student.new(age, name, parent_permission)
-    when 'n'
-      parent_permission = false
-      Student.new(age, name, parent_permission)
-    else
-      puts 'Please enter Y/N[y/n]'
-      create_student
-    end
-  end
-
-  def create_teacher
-    puts 'Age: '
-    age = gets.chomp.to_i
-    puts 'Name: '
-    name = gets.chomp
-    puts 'Specialization: '
-    specialization = gets.chomp
-    Teacher.new(specialization, age, name)
-  end
-
+  
  
 
 
 
-  def list_people
-    if @person.empty?
-      puts "\nNo registered person. You can create a person from the main menu."
-      puts
-    else
-      @person.each_with_index do |person, index|
-        if person.is_a?(Student)
-          puts "#{index}) [Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}}"
-        else
-          puts "#{index}) [Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-        end
-      end
-    end
-  end
+  
 
   def create_rental
     puts 'Select a book from the following list by number'

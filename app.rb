@@ -64,35 +64,6 @@ require './teacher'
     end
   end
 
-  def create_student
-    puts 'Age: '
-    age = gets.chomp.to_i
-    puts 'Name: '
-    name = gets.chomp.to_s
-    puts 'Has parent permission? [Y/N]: '
-    permission = gets.chomp.downcase
-    case permission
-    when 'y'
-      parent_permission = true
-      Student.new(age, name, parent_permission)
-    when 'n'
-      parent_permission = false
-      Student.new(age, name, parent_permission)
-    else
-      puts 'Please enter Y/N[y/n]'
-      create_student
-    end
-  end
-
-  def create_teacher
-    puts 'Age: '
-    age = gets.chomp.to_i
-    puts 'Name: '
-    name = gets.chomp
-    puts 'Specialization: '
-    specialization = gets.chomp
-    Teacher.new(specialization, age, name)
-  end
 
   def create_book
     puts 'Title: '

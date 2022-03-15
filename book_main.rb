@@ -1,6 +1,6 @@
 require_relative './book'
 
-class Book_Main
+class BookMain
     
     def add_book(book)
         Book.class_variable_get(:@@books) << book
@@ -14,7 +14,7 @@ class Book_Main
         book = Book.new(title, author)
         add_book(book)
         puts 'Book created successfully'
-        books = Book.class_variable_get(:@@books)
+        # books = Book.class_variable_get(:@@books)
       end
       
       def list_books
