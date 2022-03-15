@@ -6,8 +6,10 @@ require './student'
 require './teacher'
 require_relative './person_main'
 require_relative './book_main'
+require_relative './rental_main'
 @person_main = PersonMain.new
 @book_main = BookMain.new
+@rental_main = RentalMain.new
 
   def run
     @books = []
@@ -44,9 +46,9 @@ require_relative './book_main'
     when 4
       @book_main.create_book
     when 5
-      create_rental
+      @rental_main.create_rental(@book_main, @person_main)
     when 6
-      list_rentals
+      @rental_main.list_rentals
     when 7
       exit_from_menu
     else puts 'Only digits 1 to 7 are allowed'
@@ -54,40 +56,9 @@ require_relative './book_main'
   end
   # rubocop:enable Metrics/CyclomaticComplexity
 
- 
-  
- 
-
-
-
-  
-
-  def create_rental
-    puts 'Select a book from the following list by number'
-    @book_main.list_books
-    selected_book = gets.chomp.to_i
-    puts 'Select a person from the following list by number(not id)'
-    list_people
-    selected_person = gets.chomp.to_i
-    puts 'Date: '
-    date = gets.chomp
-    @rental.push(Rental.new(date, @books[selected_book], @person[selected_person]))
-    puts 'Rental created successfully'
-  end
-
-  def list_rentals
-    print 'ID of person: '
-    id = gets.chomp.to_i
-    puts 'Rentals:'
-    @rental.each do |rent|
-      puts "Date: #{rent.date}, Book: #{rent.book.title} by #{rent.book.author}" if id == rent.person.id
-    end
-  end
-
   def exit_from_menu
     puts 'Thank you for using this app!'
     exit
   end
-
 
 run
