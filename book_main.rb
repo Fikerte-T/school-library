@@ -14,7 +14,6 @@ class BookMain
     book = Book.new(title, author)
     add_book(book)
     puts 'Book created successfully'
-    # books = Book.class_variable_get(:@@books)
   end
 
   def list_books
