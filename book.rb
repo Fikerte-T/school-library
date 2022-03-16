@@ -1,6 +1,9 @@
+# rubocop: disable Style/ClassVars
 class Book
   attr_accessor :title, :author
   attr_reader :rentals
+
+  @@books = []
 
   def initialize(title, author)
     @title = title
@@ -13,3 +16,4 @@ class Book
     rental.book = self
   end
 end
+# rubocop: enable Style/ClassVars

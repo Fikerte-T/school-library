@@ -33,7 +33,15 @@ N/A
 
 N/A
 
-## Author
+## Authors
+
+👤 **ATİLLA TAHA KÖRDÜĞÜM**
+
+- GitHub: [@AtillaTahak](https://github.com/AtillaTahak)
+- Twitter: [@AtillaTahaa](https://twitter.com/AtillaTahaa)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/atilla-taha-k%C3%B6rd%C3%BC%C4%9F%C3%BCm-a93702186/)
+- Blog: [Blog](https://github.com/AtillaTahak/school_library/blob/dev/atillataha.blogspot.com)
+- Youtube: [YouTube](https://www.youtube.com/channel/UCmoD0x4Z9vdG2PCsI5p8FYg)
 
 👤 **Fikerte Tesfaye**
 

@@ -1,6 +1,9 @@
+# rubocop: disable Style/ClassVars
 class Rental
   attr_accessor :date
   attr_reader :book, :person
+
+  @@rental = []
 
   def initialize(date, book, person)
     @date = date
@@ -10,3 +13,4 @@ class Rental
     person.rentals << self
   end
 end
+# rubocop: enable Style/ClassVars
