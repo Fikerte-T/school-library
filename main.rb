@@ -17,22 +17,28 @@ def run
   @rental = []
   puts 'Welcome to School Library App!'
   puts "\n"
-  if File.exist?('./files/rentals.json') && File.exist?('./files/books.json') && File.exist?('./files/people.json')
+  if check_ourfiles
     options
   else
-    if(!File.exist?('./files/books.json'))
-      puts 'books file dont exists'
-      File.open("./files/books.json", "a")
-    elsif(!File.exist?('./files/people.json'))
-      puts 'People file dont  exists'
-      File.open("./files/people.json", "a")
-    elsif(!File.exist?('./files/rentals.json'))
-      puts 'Rentals file dont exists'
-      File.open("./files/rentals.json", "a")
-    else
-      puts 'pls give me permission to create files'
-    end
     puts 'rentals.json or books.json or people.json is missing can you start again '
+  end
+end
+
+def check_ourfiles
+  if !File.exist?('./files/books.json')
+    puts 'books file dont exists'
+    File.open('./files/books.json', 'a')
+    false
+  elsif !File.exist?('./files/people.json')
+    puts 'People file dont  exists'
+    File.open('./files/people.json', 'a')
+    false
+  elsif !File.exist?('./files/rentals.json')
+    puts 'Rentals file dont exists'
+    File.open('./files/rentals.json', 'a')
+    false
+  else
+    true
   end
 end
 
