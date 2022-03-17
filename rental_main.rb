@@ -28,7 +28,6 @@ class RentalMain
     selected_person = gets.chomp.to_i
     puts 'Date: '
     date = gets.chomp
-
     rental = Rental.new(date, books[selected_book], persons[selected_person])
     rental_add(rental)
     puts 'Rental created successfully'
@@ -40,7 +39,7 @@ class RentalMain
     puts 'Rentals:'
     rentals = $data.read_from_file("./files/rentals.json")
     rentals.each do |rent|
-      puts "Date: #{rent["Date"]}, Book: #{rent["Title"]} by #{rent["Author"]}" if id == rent["Person"]
+      puts "Date: #{rent["Date"]}, Book: #{rent["Book"]} by #{rent["Author"]}" if id == rent["Person"]
     end
   end
 end
