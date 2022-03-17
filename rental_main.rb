@@ -4,17 +4,18 @@ require_relative './book'
 require_relative './person'
 require_relative './preserve_data'
 
-
 class RentalMain
   def rental_add(rental)
+    data = PreserveData.new
+
     Rental.class_variable_get(:@@rental) << rental
     @rental = Rental.class_variable_get(:@@rental)
-    @rental.each_with_index do |rent| 
-      @rental_hash = {"Date"=> rent.date, "Book"=> rent.book["Title"], "Author"=> rent.book["Author"], Person=> rent.person["ID"]}
+    @rental.each do |rent|
+      @rental_hash = { 'Date' => rent.date, 'Book' => rent.book['Title'], 'Author' => rent.book['Author'],
+                       Person => rent.person['ID'] }
     end
 
-    $data.write_to_file("./files/rentals.json", @rental_hash)
-
+    data.write_to_file('./files/rentals.json', @rental_hash)
   end
 
   def create_rental(book_main, person_main)
@@ -34,12 +35,13 @@ class RentalMain
   end
 
   def list_rentals
+    data = PreserveData.new
     print 'ID of person: '
     id = gets.chomp.to_i
     puts 'Rentals:'
-    rentals = $data.read_from_file("./files/rentals.json")
+    rentals = data.read_from_file('./files/rentals.json')
     rentals.each do |rent|
-      puts "Date: #{rent["Date"]}, Book: #{rent["Book"]} by #{rent["Author"]}" if id == rent["Person"]
+      puts "Date: #{rent['Date']}, Book: #{rent['Book']} by #{rent['Author']}" if id == rent['Person']
     end
   end
 end

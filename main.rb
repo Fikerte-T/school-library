@@ -17,12 +17,11 @@ def run
   @rental = []
   puts 'Welcome to School Library App!'
   puts "\n"
-  if(File.exist?("./files/rentals.json") && File.exist?("./files/books.json") && File.exist?("./files/people.json"))
+  if File.exist?('./files/rentals.json') && File.exist?('./files/books.json') && File.exist?('./files/people.json')
     options
-  else 
+  else
     puts 'pls check your file rentals.json or books.json or people.json'
   end
-
 end
 
 def options

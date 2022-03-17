@@ -1,24 +1,20 @@
 require_relative './person'
 require_relative './preserve_data'
 
-
-$data = PreserveData.new
-
 class PersonMain
   def add_person(person)
     Person.class_variable_get(:@@people) << person
     @people = Person.class_variable_get(:@@people)
+    data = PreserveData.new
 
-    @people.each_with_index do |person, index|
-      if person.is_a?(Student)
-        @person_hash = {"Type" => "Student","Name" => person.name, "ID" => person.id, "Age"=>person.age}
-      else
-        @person_hash = {"Type" => "Teacher","Name" => person.name, "ID" => person.id, "Age"=>person.age}
-      end
+    @people.each_with_index do |p, _index|
+      @person_hash = if p.is_a?(Student)
+                       { 'Type' => 'Student', 'Name' => p.name, 'ID' => p.id, 'Age' => p.age }
+                     else
+                       { 'Type' => 'Teacher', 'Name' => p.name, 'ID' => p.id, 'Age' => p.age }
+                     end
     end
-    $data.write_to_file("./files/people.json", @person_hash)
-
-
+    data.write_to_file('./files/people.json', @person_hash)
   end
 
   def create_person
@@ -68,20 +64,19 @@ class PersonMain
   end
 
   def list_people
-
-    tempData  = $data.read_from_file("./files/people.json")
-    if tempData == 1
+    data = PreserveData.new
+    temp_data = data.read_from_file('./files/people.json')
+    if temp_data == 1
       puts "\nNo registered person. You can create a person from the main menu."
       puts
     else
-      tempData.each_with_index do |person, index|
-        if person["Type"] == "Student"
-          puts "#{index}) [Student] Name: #{person["Name"]}, ID: #{person["ID"]}, Age: #{person["Age"]}"
-          Person.class_variable_get(:@@people) << person
+      temp_data.each_with_index do |person, index|
+        if person['Type'] == 'Student'
+          puts "#{index}) [Student] Name: #{person['Name']}, ID: #{person['ID']}, Age: #{person['Age']}"
         else
-          puts "#{index}) [Teacher] Name: #{person["Name"]}, ID: #{person["ID"]}, Age: #{person["Age"]}"
-          Person.class_variable_get(:@@people) << person
+          puts "#{index}) [Teacher] Name: #{person['Name']}, ID: #{person['ID']}, Age: #{person['Age']}"
         end
+        Person.class_variable_get(:@@people) << person
       end
     end
   end
