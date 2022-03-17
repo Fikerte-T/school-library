@@ -2,11 +2,19 @@ require_relative './book_main'
 require_relative './rental'
 require_relative './book'
 require_relative './person'
+require_relative './preserve_data'
+
 
 class RentalMain
   def rental_add(rental)
     Rental.class_variable_get(:@@rental) << rental
     @rental = Rental.class_variable_get(:@@rental)
+    @rental.each_with_index do |rent| 
+      @rental_hash = {"Date"=> rent.date, "Book"=> rent.book["Title"], "Author"=> rent.book["Author"], Person=> rent.person["ID"]}
+    end
+
+    $data.write_to_file("./files/rentals.json", @rental_hash)
+
   end
 
   def create_rental(book_main, person_main)
@@ -20,6 +28,7 @@ class RentalMain
     selected_person = gets.chomp.to_i
     puts 'Date: '
     date = gets.chomp
+
     rental = Rental.new(date, books[selected_book], persons[selected_person])
     rental_add(rental)
     puts 'Rental created successfully'
@@ -29,8 +38,9 @@ class RentalMain
     print 'ID of person: '
     id = gets.chomp.to_i
     puts 'Rentals:'
-    @rental.each do |rent|
-      puts "Date: #{rent.date}, Book: #{rent.book.title} by #{rent.book.author}" if id == rent.person.id
+    rentals = $data.read_from_file("./files/rentals.json")
+    rentals.each do |rent|
+      puts "Date: #{rent["Date"]}, Book: #{rent["Title"]} by #{rent["Author"]}" if id == rent["Person"]
     end
   end
 end

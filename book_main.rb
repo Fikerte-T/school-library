@@ -30,6 +30,7 @@ class BookMain
     else
       books_list.each_with_index do |book, index|
         puts "(#{index}) Title: #{book["Title"]}, Author: #{book["Author"]}"
+        add_book(book)
       end
     end
     # end

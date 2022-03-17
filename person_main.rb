@@ -77,8 +77,10 @@ class PersonMain
       tempData.each_with_index do |person, index|
         if person["Type"] == "Student"
           puts "#{index}) [Student] Name: #{person["Name"]}, ID: #{person["ID"]}, Age: #{person["Age"]}"
+          Person.class_variable_get(:@@people) << person
         else
           puts "#{index}) [Teacher] Name: #{person["Name"]}, ID: #{person["ID"]}, Age: #{person["Age"]}"
+          Person.class_variable_get(:@@people) << person
         end
       end
     end
