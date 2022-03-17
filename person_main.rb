@@ -68,15 +68,17 @@ class PersonMain
   end
 
   def list_people
-    if @people.empty?
+
+    tempData  = $data.read_from_file("./files/people.json")
+    if tempData == 1
       puts "\nNo registered person. You can create a person from the main menu."
       puts
     else
-      @people.each_with_index do |person, index|
-        if person.is_a?(Student)
-          puts "#{index}) [Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      tempData.each_with_index do |person, index|
+        if person["Type"] == "Student"
+          puts "#{index}) [Student] Name: #{person["Name"]}, ID: #{person["ID"]}, Age: #{person["Age"]}"
         else
-          puts "#{index}) [Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+          puts "#{index}) [Teacher] Name: #{person["Name"]}, ID: #{person["ID"]}, Age: #{person["Age"]}"
         end
       end
     end
