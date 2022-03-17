@@ -24,7 +24,14 @@ class BookMain
   def list_books
     # @books.each_with_index do |book, index|
     #   puts "(#{index}) Title: #{book.title}, Author: #{book.author}"
-    $data.read_from_file("./files/books.json")
+    books_list = $data.read_from_file("./files/books.json")
+    if books_list == 1
+      puts "No books in the library"
+    else
+      books_list.each_with_index do |book, index|
+        puts "(#{index}) Title: #{book["Title"]}, Author: #{book["Author"]}"
+      end
+    end
     # end
   end
 end
