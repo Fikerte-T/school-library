@@ -1,9 +1,24 @@
 require_relative './person'
+require_relative './preserve_data'
+
+
+$data = PreserveData.new
 
 class PersonMain
   def add_person(person)
     Person.class_variable_get(:@@people) << person
     @people = Person.class_variable_get(:@@people)
+
+    @people.each_with_index do |person, index|
+      if person.is_a?(Student)
+        @person_hash = {"Type" => "Student","Name" => person.name, "ID" => person.id, "Age"=>person.age}
+      else
+        @person_hash = {"Type" => "Teacher","Name" => person.name, "ID" => person.id, "Age"=>person.age}
+      end
+    end
+    $data.write_to_file("./files/people.json", @person_hash)
+
+
   end
 
   def create_person
