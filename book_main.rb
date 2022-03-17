@@ -1,5 +1,7 @@
 require_relative './book'
+require_relative './preserve_data'
 
+$data = PreserveData.new
 class BookMain
   def add_book(book)
     Book.class_variable_get(:@@books) << book
@@ -12,13 +14,17 @@ class BookMain
     puts 'Author: '
     author = gets.chomp
     book = Book.new(title, author)
-    add_book(book)
+    book_hash = {"Title"=> book.title, "Author"=> book.author}
+    # add_book(book)
+    
+    $data.write_to_file("./files/books.json", book_hash)
     puts 'Book created successfully'
   end
 
   def list_books
-    @books.each_with_index do |book, index|
-      puts "(#{index}) Title: #{book.title}, Author: #{book.author}"
-    end
+    # @books.each_with_index do |book, index|
+    #   puts "(#{index}) Title: #{book.title}, Author: #{book.author}"
+    $data.read_from_file("./files/books.json")
+    # end
   end
 end
