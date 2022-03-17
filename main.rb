@@ -20,7 +20,19 @@ def run
   if File.exist?('./files/rentals.json') && File.exist?('./files/books.json') && File.exist?('./files/people.json')
     options
   else
-    puts 'pls check your file rentals.json or books.json or people.json'
+    if(!File.exist?('./files/books.json'))
+      puts 'books file dont exists'
+      File.open("./files/books.json", "a")
+    elsif(!File.exist?('./files/people.json'))
+      puts 'People file dont  exists'
+      File.open("./files/people.json", "a")
+    elsif(!File.exist?('./files/rentals.json'))
+      puts 'Rentals file dont exists'
+      File.open("./files/rentals.json", "a")
+    else
+      puts 'pls give me permission to create files'
+    end
+    puts 'rentals.json or books.json or people.json is missing can you start again '
   end
 end
 
