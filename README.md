@@ -27,7 +27,12 @@ N/A
 ### Usage
 
 - run: `git clone https://https://github.com/Fikerte-T/school-library/`
+- run: `bundle install`
 - run: `ruby main.rb`
+
+    To run the tests 
+- `cd` to local copy of the project
+- run: `rspec spec`
 
 ### Deployment
 

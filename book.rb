@@ -5,10 +5,10 @@ class Book
 
   @@books = []
 
-  def initialize(title, author)
+  def initialize(title, author, rental = [])
     @title = title
     @author = author
-    @rentals = []
+    @rentals = rental
   end
 
   def add_rental(rental)
