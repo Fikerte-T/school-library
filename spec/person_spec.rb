@@ -1,7 +1,6 @@
 require_relative '../person'
 require_relative '../nameable'
 
-
 describe Person do
   describe '#initialize' do
     before(:each) do
@@ -11,17 +10,15 @@ describe Person do
       expect(@person).to be_an_instance_of Person
     end
     it 'Person object has name of type string' do
-        
-        expect(@person.name).to be_a(String)
-        expect(@person.name).to eq ('John')
+      expect(@person.name).to be_a(String)
+      expect(@person.name).to eq('John')
     end
     it 'Person object has age of type integer' do
-       
-        expect(@person.age).to be_a(Integer)
-        expect(@person.age).to eq (44)
+      expect(@person.age).to be_a(Integer)
+      expect(@person.age).to eq(44)
     end
     it 'Person inherits from nameable' do
-        expect(Person).to be < Nameable 
+      expect(Person).to be < Nameable
     end
     it 'person object responds to a method add_rental' do
       expect(@person).to respond_to(:add_rental)

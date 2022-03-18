@@ -20,4 +20,3 @@ class Student < Person
   end
 end
 # rubocop: enable Style/OptionalBooleanParameter
-

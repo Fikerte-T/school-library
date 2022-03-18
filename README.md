@@ -30,8 +30,8 @@ N/A
 - run: `bundle install`
 - run: `ruby main.rb`
 
-To run the tests 
-- `cd` to `/spec`
+    To run the tests 
+- `cd` to local copy of the project
 - run: `rspec spec`
 
 ### Deployment
